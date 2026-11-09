@@ -80,7 +80,7 @@ CLASSPATH="bin:jcalendar-1.4.jar:jgoodies-forms-1.8.0.jar:/usr/share/java/mariad
 # Loop to keep Java running
 while true; do
     echo "Running Java Application..."
-    java -cp "$CLASSPATH" ProjectDefault.home || true
+    java -cp "$CLASSPATH" ProjectDefault.login || true
     echo "Application closed, restarting in 2 seconds..."
     sleep 2
 done

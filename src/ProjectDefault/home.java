@@ -67,13 +67,18 @@ public class home extends JFrame {
 		JButton btn1 = new JButton("Login");
 		btn1.addMouseListener(new MouseAdapter() {
 			@Override
+			public void mousePressed(MouseEvent e) {
+				dispose();
+				login f = new login();
+				f.setVisible(true);
+			}
+			@Override
 			public void mouseEntered(MouseEvent e) {
 				btn1.setBackground(new Color(150, 150, 150));
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
 				btn1.setBackground(new Color(192, 192, 192));
-				
 			}
 		});
 		btn1.setBackground(new Color(192, 192, 192));
@@ -81,8 +86,8 @@ public class home extends JFrame {
 		btn1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				login f=new login();
-				f.show();
+				login f = new login();
+				f.setVisible(true);
 			}
 		});
 		btn1.setFont(new Font("SansSerif", Font.BOLD, 22));
@@ -91,6 +96,12 @@ public class home extends JFrame {
 		
 		JButton btnNewButton = new JButton("Data List");
 		btnNewButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				dispose();
+				listdata f = new listdata();
+				f.setVisible(true);
+			}
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				btnNewButton.setBackground(new Color(150, 150, 150));
@@ -103,8 +114,8 @@ public class home extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				listdata f=new listdata();
-				f.show();
+				listdata f = new listdata();
+				f.setVisible(true);
 			}
 		});
 		btnNewButton.setBackground(new Color(192, 192, 192));
@@ -139,6 +150,9 @@ public class home extends JFrame {
 		lblNewLabel_5.setIcon(new ImageIcon("C:\\Users\\admin\\Downloads\\fitness-gym-and-equipment-photography-dn9w2z4r8yd2wi47.jpg"));
 		lblNewLabel_5.setBounds(24, 23, 1316, 691);
 		contentPane.add(lblNewLabel_5);
+		
+		contentPane.setComponentZOrder(btn1, 0);
+		contentPane.setComponentZOrder(btnNewButton, 1);
 		
 		Toolkit toolkit = getToolkit();
 		Dimension size = toolkit.getScreenSize();
