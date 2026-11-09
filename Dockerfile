@@ -14,6 +14,7 @@ RUN apt-get update && apt-get install -y \
     websockify \
     wget \
     curl \
+    dos2unix \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
@@ -28,8 +29,8 @@ COPY . /app
 RUN mkdir -p /app/bin && \
     javac -cp "jcalendar-1.4.jar:jgoodies-forms-1.8.0.jar:/app/mysql-connector-j.jar" -d /app/bin src/ProjectDefault/*.java || true
 
-# Make start script executable
-RUN chmod +x /app/start.sh
+# Make start script executable and fix line endings
+RUN dos2unix /app/start.sh && chmod +x /app/start.sh
 
 ENV PORT=10000
 EXPOSE 10000
