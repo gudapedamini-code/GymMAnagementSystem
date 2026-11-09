@@ -22,8 +22,15 @@ sleep 3
 
 # Setup root password and databases
 echo "Configuring MySQL databases..."
-mysql -u root -e "ALTER USER 'root'@'localhost' IDENTIFIED BY 'Vedant@123'; FLUSH PRIVILEGES;" 2>/dev/null || true
-mysql -u root -p'Vedant@123' < /app/init_db.sql 2>/dev/null || mysql -u root < /app/init_db.sql 2>/dev/null || true
+mariadb -u root << 'SQLEOF' 2>/dev/null || true
+ALTER USER 'root'@'localhost' IDENTIFIED VIA mysql_native_password USING PASSWORD('Vedant@123');
+CREATE USER IF NOT EXISTS 'root'@'127.0.0.1' IDENTIFIED VIA mysql_native_password USING PASSWORD('Vedant@123');
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'localhost' WITH GRANT OPTION;
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'127.0.0.1' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
+SQLEOF
+
+mariadb -u root -p'Vedant@123' < /app/init_db.sql 2>/dev/null || mariadb -u root < /app/init_db.sql 2>/dev/null || true
 echo "MySQL Database initialized."
 
 # 2. Setup Virtual Display (Xvfb)

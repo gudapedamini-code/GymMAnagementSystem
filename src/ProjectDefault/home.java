@@ -64,7 +64,7 @@ public class home extends JFrame {
 		lblNewLabel.setBounds(344, 96, 754, 52);
 		contentPane.add(lblNewLabel);
 		
-		Button btn1 = new Button("Login");
+		JButton btn1 = new JButton("Login");
 		btn1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -85,7 +85,7 @@ public class home extends JFrame {
 				f.show();
 			}
 		});
-		btn1.setFont(new Font("Modern No. 20", Font.BOLD | Font.ITALIC, 25));
+		btn1.setFont(new Font("SansSerif", Font.BOLD, 22));
 		btn1.setBounds(902, 578, 138, 65);
 		contentPane.add(btn1);
 		

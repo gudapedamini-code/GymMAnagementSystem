@@ -253,6 +253,7 @@ public class login extends JFrame {
 					
 				} catch(SQLException sqlexception){
 					sqlexception.printStackTrace();
+					JOptionPane.showMessageDialog(null, "Database Error: " + sqlexception.getMessage());
 				}
 			}
 		});

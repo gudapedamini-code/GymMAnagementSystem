@@ -7,12 +7,15 @@ USE manage;
 CREATE TABLE IF NOT EXISTS users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     uname VARCHAR(100) NOT NULL,
-    upwd VARCHAR(100) NOT NULL
+    upwd VARCHAR(100) NOT NULL,
+    UNIQUE KEY uq_user (uname, upwd)
 );
 
 INSERT INTO users (uname, upwd) VALUES 
 ('admin', 'admin123'),
-('root', 'Vedant@123')
+('admin', 'admin'),
+('root', 'Vedant@123'),
+('root', 'root')
 ON DUPLICATE KEY UPDATE upwd=VALUES(upwd);
 
 
